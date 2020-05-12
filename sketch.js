@@ -1,67 +1,92 @@
-const engine = matter.engine;
-const world= matter.world;
-const bodies = matter.bodies;
+ /*var Engine = Matter.Engine,
+      World = Matter.World,
+      Bodies = Matter.Bodies;*/
 
 
+var ellipse2 = 0;
+var ellipse3 = 50;
+var ellipse4=255;
+var ellipse;
+var Engine;
+var Matter;
+var background;
 
-var r = 0;
-var g = 50;
-var b=255;
-var ellipse = 250;
-
+/*ellipse.velocityX = 2;
+ellipse.velocityY = 2;*/
 
 function setup(){
+  createCanvas(400,400);
+ /* Engine = engine.create();
+  World = Engine.world;*/
  
-  createCanvas(1200,400);
-  engine=  engine.create();
-  world = engine.world;
+  ellipse2 = createSprite(200,60,10,20);
+  ellipse2.shapeColor = "red";
+  ellipse3 = createSprite(10,250,10,20);
+  ellipse3.shapeColor = "green";
+  ellipse4 = createSprite(300,250,10,20);
+  ellipse4.shapeColor = "blue";
+  ellipse =  new Ellipse(mouseX,mouseY,10,20);
+  ellipse.shapeColor = "yellow";
+ 
 
-  world.add(r);
-  world.add(g);
-  world.add(b);
-  world.add(ellipse);
+}
+
+/*function keyDown(){
+
+    if(keyDown("LEFT_ARROW")) {
+    ball.velocityX = -2;
+    ball.velocityY = 0;
+   }
+    
+    if(keyDown("RIGHT_ARROW")) {
+    ellipse.velocityX = 2;
+    ellipse.velocityY = 0; 
+    }
+    
+    if(keyDown("DOWN_ARROW")) {
+    ellipse.velocityX = 0;
+    ellipse.velocityY = 2;
+   } 
+   if(keyDown("UP_ARROW")) {
+    ellipse.velocityX = 0;
+    ellipse.velocityY = -3;
+   }
+}*/
 
 
-  r = createSprite(300,200,60,50);
-  r.shapColor = red;
-  g  =createSprite(360,250,50,60);
-  g.shapeColor = green;
-  b = createSprite(100,150,70,80);
-  b.shapeColor = blue;
-  ellipse = createSprite(100,340,20,10);
-  ellipse.shapeColor = yelollw;
 
+function isTouching(){
+ if(ellipse.isTouching(ellipse2)){
+    background("red");
+  }
+
+  else{
+    background("black");  
+  }
+
+  if(ellipse.isTouching(ellipse3)){
+    background("green");
+  }
+
+  else{
+    background("black");
+  }
+
+  if(ellipse.isTouching(ellipse4)){
+    background("blue");
+  }
+
+  else{
+    background("black");
+  }
+}
 
 
 function draw(){
-background("0,0,0");
-
-ellipse.velocityX = World.mouseX;
-ellipse.velocityY = World.mouseY;
-
-  if(isTouching(ellipse,r)){
-    background.shapeColor = "red";
-  }
-
-  else{
-    background.shapeColor = "white";  
-  }
-
-  if(isTouching(ellipse,g)){
-    background.shapeColor = "green";
-  }
-
-  else{
-    background.shapeClor = "white";
-  }
-
-  if(isTouching(ellipse,b)){
-    background.shapecolor = "blue";
-  }
-
-  else{
-    background.shapeColor = "white";
-  }
-
+background("black");
+//Engine = engine.update();
+ellipse2.display();
+ellipse3.display();
+ellipse4.display();
+ellipse.display();
 }
-};
